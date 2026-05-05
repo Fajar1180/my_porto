@@ -8,73 +8,54 @@ class CounterPage extends StatefulWidget {
 }
 
 class _CounterPageState extends State<CounterPage> {
-  int _count = 0;
+  int _counter = 0;
 
-  void _increment() {
+  void _incrementCounter() {
     setState(() {
-      _count++;
+      _counter++;
     });
   }
 
-  void _decrement() {
+  void _decrementCounter() {
     setState(() {
-      _count--;
-    });
-  }
-
-  void _reset() {
-    setState(() {
-      _count = 0;
+      _counter--;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Counter')),
+      appBar: AppBar(
+        title: const Text('Counter'),
+        backgroundColor: Colors.green,
+        foregroundColor: Colors.white,
+      ),
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Icon(
-                Icons.exposure_plus_1,
-                size: 80,
-                color: Color(0xFF5B9DDA),
-              ),
-              const SizedBox(height: 18),
-              const Text(
-                'Counter Example',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                '$_count',
-                style: const TextStyle(
-                  fontSize: 54,
-                  fontWeight: FontWeight.bold,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'You have pushed the button this many times:',
+            ),
+            Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: _incrementCounter,
+                  child: const Text('+'),
                 ),
-              ),
-              const SizedBox(height: 22),
-              Wrap(
-                spacing: 12,
-                runSpacing: 12,
-                alignment: WrapAlignment.center,
-                children: <Widget>[
-                  ElevatedButton(
-                    onPressed: _decrement,
-                    child: const Text('Kurang'),
-                  ),
-                  ElevatedButton(onPressed: _reset, child: const Text('Reset')),
-                  ElevatedButton(
-                    onPressed: _increment,
-                    child: const Text('Tambah'),
-                  ),
-                ],
-              ),
-            ],
-          ),
+                const SizedBox(width: 20),
+                ElevatedButton(
+                  onPressed: _decrementCounter,
+                  child: const Text('-'),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );

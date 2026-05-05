@@ -8,37 +8,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:my_porto/main.dart';
+import 'package:myporto_fajar/main.dart';
 
 void main() {
-  testWidgets('Dashboard shows all portfolio items', (WidgetTester tester) async {
+  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+    // Build our app and trigger a frame.
     await tester.pumpWidget(const MyApp());
 
-    expect(find.text('MyPorto'), findsOneWidget);
-    expect(find.text('Cek hasil karyaku disini:'), findsOneWidget);
-    expect(find.text('Counter'), findsOneWidget);
-    expect(find.text('Widget Bertingkat'), findsOneWidget);
-    expect(find.text('User Input Example'), findsOneWidget);
-    expect(find.text('Dynamic List Example'), findsOneWidget);
-    expect(find.text('Navigasi Sederhana'), findsOneWidget);
-    expect(find.text('Grid View'), findsOneWidget);
-    expect(find.text('Tentang Saya'), findsOneWidget);
-  });
+    // Verify that our counter starts at 0.
+    expect(find.text('0'), findsOneWidget);
+    expect(find.text('1'), findsNothing);
 
-  testWidgets('Tapping Tentang Saya opens profile page', (WidgetTester tester) async {
-    await tester.pumpWidget(const MyApp());
+    // Tap the '+' icon and trigger a frame.
+    await tester.tap(find.byIcon(Icons.add));
+    await tester.pump();
 
-    await tester.scrollUntilVisible(
-      find.text('Tentang Saya'),
-      200,
-      scrollable: find.byType(Scrollable),
-    );
-    await tester.tap(find.text('Tentang Saya'));
-    await tester.pumpAndSettle();
-
-    expect(find.text('Tentang Saya'), findsWidgets);
-    expect(find.text('NPM'), findsOneWidget);
-    expect(find.text('Nama'), findsOneWidget);
-    expect(find.text('Sekilas tentang saya......'), findsOneWidget);
+    // Verify that our counter has incremented.
+    expect(find.text('0'), findsNothing);
+    expect(find.text('1'), findsOneWidget);
   });
 }

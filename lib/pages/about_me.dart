@@ -6,120 +6,44 @@ class AboutMe extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Tentang Saya')),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
-          child: Center(
-            child: Column(
-              children: <Widget>[
-                Container(
-                  width: 160,
-                  height: 160,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(28),
-                    boxShadow: const <BoxShadow>[
-                      BoxShadow(
-                        color: Color(0x14000000),
-                        blurRadius: 20,
-                        offset: Offset(0, 12),
-                      ),
-                    ],
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(28),
-                    child: Image.asset(
-                      'assets/images/profile.jpg',
-                      fit: BoxFit.cover,
-                      errorBuilder:
-                          (
-                            BuildContext context,
-                            Object error,
-                            StackTrace? stackTrace,
-                          ) {
-                            return Container(
-                              decoration: const BoxDecoration(
-                                gradient: LinearGradient(
-                                  colors: <Color>[
-                                    Color(0xFFEAF2FF),
-                                    Color(0xFFD5E7FA),
-                                  ],
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight,
-                                ),
-                              ),
-                              child: const Center(
-                                child: Icon(
-                                  Icons.person,
-                                  size: 92,
-                                  color: Color(0xFF5B9DDA),
-                                ),
-                              ),
-                            );
-                          },
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 28),
-                const Text(
-                  'NPM',
+      appBar: AppBar(
+        title: const Text('Tentang Saya'),
+        centerTitle: true, // Center title di AppBar
+        backgroundColor: Colors.green,
+        foregroundColor: Colors.white,
+      ),
+      body: Center( // Tambahkan Center widget
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min, // Membuat column hanya sebesar kontennya
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                radius: 50,
+                backgroundImage: AssetImage('assets/Fajar.png'),
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                'NPM: 20241320075',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 10),
+              const Text(
+                'Nama: Muhammad Fajar Nurjaman',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 20),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 40.0),
+                child: Text(
+                  'Saya Muhammad Fajar Nurjaman, Mahasiswa Sistem Informasi semester 4 di Universitas Kebangsaan Republik Indonesia. Memiliki minat besar dalam menjembatani kebutuhan bisnis dengan solusi teknologi. Saat ini aktif mendalami manajemen basis data dan pengembangan sistem, serta terbuka untuk peluang kolaborasi dan proyek teknologi.',
+                  style: TextStyle(fontSize: 16),
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700,
-                    color: Color(0xFF222222),
-                  ),
                 ),
-                const SizedBox(height: 8),
-                const Text(
-                  '20241320059',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    color: Color(0xFF222222),
-                  ),
-                ),
-                const SizedBox(height: 18),
-                const Text(
-                  'Nama',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700,
-                    color: Color(0xFF222222),
-                  ),
-                ),
-                const SizedBox(height: 8),
-                const Text(
-                  'Muhammad Fajar Nurjaman',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    color: Color(0xFF222222),
-                  ),
-                ),
-                const SizedBox(height: 22),
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(18),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFF4F4F4),
-                    borderRadius: BorderRadius.circular(18),
-                  ),
-                  child: const Text(
-                    'Sekilas tentang saya......',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 16,
-                      height: 1.6,
-                      color: Color(0xFF333333),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

@@ -9,62 +9,38 @@ class UserInputPage extends StatefulWidget {
 
 class _UserInputPageState extends State<UserInputPage> {
   final TextEditingController _controller = TextEditingController();
-  String _submittedText = 'Belum ada input.';
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  void _submit() {
-    setState(() {
-      _submittedText = _controller.text.isEmpty
-          ? 'Belum ada input.'
-          : _controller.text;
-    });
-  }
+  String _inputText = '';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('User Input Example')),
+      appBar: AppBar(
+        title: const Text('User Input Example'),
+        backgroundColor: Colors.green,
+        foregroundColor: Colors.white,
+      ),
       body: Padding(
-        padding: const EdgeInsets.all(24),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            const Text(
-              'Masukkan teks di bawah:',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-            ),
-            const SizedBox(height: 14),
+          children: [
             TextField(
               controller: _controller,
-              decoration: InputDecoration(
-                hintText: 'Tulis sesuatu',
-                filled: true,
-                fillColor: const Color(0xFFF2F2F2),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16),
-                  borderSide: BorderSide.none,
-                ),
+              decoration: const InputDecoration(
+                labelText: 'Enter text',
+                border: OutlineInputBorder(),
               ),
             ),
-            const SizedBox(height: 14),
-            ElevatedButton(onPressed: _submit, child: const Text('Tampilkan')),
-            const SizedBox(height: 24),
-            Container(
-              padding: const EdgeInsets.all(18),
-              decoration: BoxDecoration(
-                color: const Color(0xFFF4F4F4),
-                borderRadius: BorderRadius.circular(18),
-              ),
-              child: Text(
-                _submittedText,
-                style: const TextStyle(fontSize: 16, height: 1.5),
-              ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  _inputText = _controller.text;
+                });
+              },
+              child: const Text('Submit'),
             ),
+            const SizedBox(height: 20),
+            Text('Input: $_inputText'),
           ],
         ),
       ),
