@@ -17,11 +17,6 @@ class AboutMe extends StatelessWidget {
                   width: 160,
                   height: 160,
                   decoration: BoxDecoration(
-                    gradient: const LinearGradient(
-                      colors: <Color>[Color(0xFFEAF2FF), Color(0xFFD5E7FA)],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
                     borderRadius: BorderRadius.circular(28),
                     boxShadow: const <BoxShadow>[
                       BoxShadow(
@@ -31,11 +26,37 @@ class AboutMe extends StatelessWidget {
                       ),
                     ],
                   ),
-                  child: const Center(
-                    child: Icon(
-                      Icons.person,
-                      size: 92,
-                      color: Color(0xFF5B9DDA),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(28),
+                    child: Image.asset(
+                      'assets/images/profile.jpg',
+                      fit: BoxFit.cover,
+                      errorBuilder:
+                          (
+                            BuildContext context,
+                            Object error,
+                            StackTrace? stackTrace,
+                          ) {
+                            return Container(
+                              decoration: const BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: <Color>[
+                                    Color(0xFFEAF2FF),
+                                    Color(0xFFD5E7FA),
+                                  ],
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                ),
+                              ),
+                              child: const Center(
+                                child: Icon(
+                                  Icons.person,
+                                  size: 92,
+                                  color: Color(0xFF5B9DDA),
+                                ),
+                              ),
+                            );
+                          },
                     ),
                   ),
                 ),
