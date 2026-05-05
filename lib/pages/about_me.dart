@@ -26,7 +26,7 @@ class AboutMe extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               const Text(
-                'NPM: 20241320075',
+                'NPM: 20241320059',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10),
